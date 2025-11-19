@@ -26,7 +26,7 @@
                 <a href="#about" class="hover:text-violet-400 transition">Sobre</a>
                 <a href="#contact" class="hover:text-violet-400 transition">Contato</a>
             </nav>
-            <button id="loginBtn" class="bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-300">Login</button>
+            <button id="openModalBtn" class="bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-300">Cadastro</button>
         </header>
 
         <!-- Seção Principal --><main class="text-center flex flex-col justify-center items-center min-h-screen pt-24">
@@ -203,51 +203,137 @@
         </footer>
     </div>
 
-    <!-- Modal de Login/Cadastro --><div id="authModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop hidden">
-        <div id="modalContent" class="glass-effect w-full max-w-md rounded-2xl p-8 transform transition-all duration-300 scale-95 opacity-0">
-            <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-            </button>
+<div id="authModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop hidden">
+    <div id="modalContent" class="glass-effect w-full max-w-md rounded-2xl p-8 transform transition-all duration-300">
+        
+        <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
 
-            <div class="flex border-b border-gray-700 mb-6">
-                <button id="loginTab" class="py-2 px-4 w-1/2 tab-button tab-active">Login</button>
-                <button id="registerTab" class="py-2 px-4 w-1/2 tab-button">Cadastro</button>
-            </div>
+        <div class="mb-6 text-center border-b border-gray-700 pb-4">
+            <h2 class="text-2xl font-bold text-white">Novo Cadastro</h2>
+            <p class="text-gray-400 text-sm mt-1">Preencha os dados para gerar o registro</p>
+        </div>
 
-            <div class="form-container">
-                <div id="loginFormWrapper" class="form-wrapper is-active">
-                    <form id="loginForm" class="space-y-4">
-                        <div>
-                            <label for="login-email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
-                            <input type="email" id="login-email" class="form-input w-full p-2 rounded-lg text-white" placeholder="seu@email.com" required>
-                        </div>
-                        <div>
-                            <label for="login-password" class="block text-sm font-medium text-gray-300 mb-1">Senha</label>
-                            <input type="password" id="login-password" class="form-input w-full p-2 rounded-lg text-white" placeholder="********" required>
-                        </div>
-                        <button type="submit" class="w-full bg-violet-600 hover:bg-violet-700 text-white font-semibold py-3 rounded-lg transition duration-300">Entrar</button>
-                    </form>
-                </div>
-                <div id="registerFormWrapper" class="form-wrapper is-inactive-right">
-                    <form id="registerForm" class="space-y-4">
-                        <div>
-                            <label for="register-name" class="block text-sm font-medium text-gray-300 mb-1">Nome</label>
-                            <input type="text" id="register-name" class="form-input w-full p-2 rounded-lg text-white" placeholder="Seu nome completo" required>
-                        </div>
-                        <div>
-                            <label for="register-email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
-                            <input type="email" id="register-email" class="form-input w-full p-2 rounded-lg text-white" placeholder="seu@email.com" required>
-                        </div>
-                        <div>
-                            <label for="register-password" class="block text-sm font-medium text-gray-300 mb-1">Senha</label>
-                            <input type="password" id="register-password" class="form-input w-full p-2 rounded-lg text-white" placeholder="Crie uma senha forte" required>
-                        </div>
-                        <button type="submit" class="w-full bg-violet-600 hover:bg-violet-700 text-white font-semibold py-3 rounded-lg transition duration-300">Criar Conta</button>
-                    </form>
-                </div>
+        <div class="form-container">
+            <div id="registerFormWrapper" class="w-full">
+                <form id="registerForm" class="space-y-4">
+                    
+                    <div>
+                        <label for="register-name" class="block text-sm font-medium text-gray-300 mb-1">Nome</label>
+                        <input type="text" id="register-name" class="form-input w-full p-2 rounded-lg text-white bg-gray-800 border border-gray-600 focus:border-violet-500 outline-none" placeholder="Primeiro nome" required>
+                    </div>
+
+                    <div>
+                        <label for="register-lastname" class="block text-sm font-medium text-gray-300 mb-1">Sobrenome</label>
+                        <input type="text" id="register-lastname" class="form-input w-full p-2 rounded-lg text-white bg-gray-800 border border-gray-600 focus:border-violet-500 outline-none" placeholder="Sobrenome" required>
+                    </div>
+
+                    <div>
+                        <label for="register-email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                        <input type="email" id="register-email" class="form-input w-full p-2 rounded-lg text-white bg-gray-800 border border-gray-600 focus:border-violet-500 outline-none" placeholder="seu@email.com" required>
+                    </div>
+
+                    <button type="submit" class="w-full bg-violet-600 hover:bg-violet-700 text-white font-semibold py-3 rounded-lg transition duration-300 mt-2 shadow-lg">
+                        Cadastrar
+                    </button>
+                </form>
             </div>
         </div>
     </div>
+</div>
+
+<script>
+    // 1. Variável de controle para o ID Auto Increment (mantida)
+    let currentId = 30;
+
+    // 2. Elementos do Modal
+    const authModal = document.getElementById('authModal');
+    const modalContent = document.getElementById('modalContent');
+    const openBtn = document.getElementById('openModalBtn');
+    const closeBtn = document.getElementById('closeModal');
+    const registerForm = document.getElementById('registerForm');
+
+    // --- FUNÇÕES DE CONTROLE DO MODAL ---
+
+    // Função para abrir o modal
+    function openModal() {
+        authModal.classList.remove('hidden');
+        // Animação de abertura
+        setTimeout(() => {
+            modalContent.classList.remove('scale-95', 'opacity-0');
+            modalContent.classList.add('scale-100', 'opacity-100');
+        }, 10);
+    }
+
+    // Função para fechar o modal
+    function closeModal() {
+        // Animação de fechamento
+        modalContent.classList.remove('scale-100', 'opacity-100');
+        modalContent.classList.add('scale-95', 'opacity-0');
+        
+        // Oculta após a animação
+        setTimeout(() => {
+            authModal.classList.add('hidden');
+        }, 300); 
+    }
+
+    // --- EVENT LISTENERS ---
+
+    // Abrir o modal ao clicar no botão "Cadastro" do cabeçalho
+    openBtn.addEventListener('click', openModal);
+
+    // Fechar o modal ao clicar no X
+    closeBtn.addEventListener('click', closeModal);
+
+    // Fechar o modal ao clicar fora dele (no fundo)
+    authModal.addEventListener('click', function(e) {
+        if (e.target === authModal) {
+            closeModal();
+        }
+    });
+
+
+    // --- LÓGICA DE CADASTRO E GERAÇÃO DE CSV (Mantida e encapsulada) ---
+
+    registerForm.addEventListener('submit', function(e) {
+        e.preventDefault(); 
+
+        // 1. Capturar valores
+        const name = document.getElementById('register-name').value.trim();
+        const lastName = document.getElementById('register-lastname').value.trim();
+        
+        // 2. Montar o conteúdo do CSV
+        const csvHeader = "id,name,last_name";
+        const csvRow = `${currentId},${name},${lastName}`;
+        const csvContent = `${csvHeader}\n${csvRow}`;
+
+        // 3. Criar e baixar o CSV
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        
+        link.setAttribute("href", url);
+        link.setAttribute("download", "users.csv");
+        link.style.visibility = 'hidden';
+        
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // 4. Lógica de pós-cadastro
+        currentId++; 
+        alert(`🎉 Sucesso! Usuário ${name} cadastrado com ID ${currentId - 1}. Arquivo users.csv baixado.`);
+        
+        closeModal(); // Fecha o modal após o cadastro
+        registerForm.reset(); // Limpa os campos
+    });
+
+    // Remova a lógica de fechar o modal que estava solta anteriormente, 
+    // pois ela foi movida para as funções `closeModal` e os event listeners acima.
+</script>
 
     <script src="js/script.js"></script>
 </body>
